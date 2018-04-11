@@ -7,49 +7,52 @@ struct point {
 
 };
 
-point check(char c,int x,int y,char board[8][8],float king[8][8],float queen[8][8],float rock[8][8],float bishop[8][8],float knight[8][8], float pawn[8][8])
+point check(char board[8][8],float king[8][8],float queen[8][8],float rock[8][8],float bishop[8][8],float knight[8][8], float pawn[8][8])
 {
+
   int a1,b1;
-  point ret;
+  point ret; //where we put the best move
   ret.x=-1;
   ret.y=-1;
   float maxi=-100000;
   ret.maxi=maxi;
-  if(c=='R')
+for (int m=0;m<8;m++)
+    for (int n=0;n<8;n++)
+  if(board[m][n]=='R')
   {
-    float init=rock[x][y];
-    for(int i=x+1;i<8;i++)
+    float init=rock[m][n];
+    for(int i=m+1;i<8;i++)
     {
-      if(board[i][y]=='e')
+      if(board[i][n]=='e')
       {
-        float current=rock[i][y];
-        if(board[i][y]=='r')current+=50;
-        else if(board[i][y]=='n')current+=30;
-        else if(board[i][y]=='p')current+=10;
-        else if(board[i][y]=='q')current+=90;
-        else if(board[i][y]=='b')current+=30;
-        else if(board[i][y]=='k')current+=900;
+        float current=rock[i][n];
+        if(board[i][n]=='r')current+=50;
+        else if(board[i][n]=='n')current+=30;
+        else if(board[i][n]=='p')current+=10;
+        else if(board[i][n]=='q')current+=90;
+        else if(board[i][n]=='b')current+=30;
+        else if(board[i][n]=='k')current+=900;
         if(current-init>maxi){
         ret.x=i;
-        ret.y=y;
+        ret.y=n;
         a1=ret.x;
         b1=ret.y;
         ret.maxi=current-init;
         maxi=current-init;
         }
       }
-      else if(board[i][y]=='r' || board[i][y]=='n' || board[i][y]=='p' || board[i][y]=='q' || board[i][y]=='b' || board[i][y]=='k')
+      else if(board[i][n]=='r' || board[i][n]=='n' || board[i][n]=='p' || board[i][n]=='q' || board[i][n]=='b' || board[i][n]=='k')
       {
-        float current=rock[i][y];
-        if(board[i][y]=='r')current+=50;
-        else if(board[i][y]=='n')current+=30;
-        else if(board[i][y]=='p')current+=10;
-        else if(board[i][y]=='q')current+=90;
-        else if(board[i][y]=='b')current+=30;
-        else if(board[i][y]=='k')current+=900;
+        float current=rock[i][n];
+        if(board[i][n]=='r')current+=50;
+        else if(board[i][n]=='n')current+=30;
+        else if(board[i][n]=='p')current+=10;
+        else if(board[i][n]=='q')current+=90;
+        else if(board[i][n]=='b')current+=30;
+        else if(board[i][n]=='k')current+=900;
         if(current-init>maxi){
         ret.x=i;
-        ret.y=y;
+        ret.y=n;
         a1=ret.x;
         b1=ret.y;
         ret.maxi=current-init;
@@ -58,38 +61,38 @@ point check(char c,int x,int y,char board[8][8],float king[8][8],float queen[8][
       }
       else break;
     }
-    for(int i=x-1;i>-1;i--)
+    for(int i=m-1;i>-1;i--)
     {
-      if(board[i][y]=='e')
+      if(board[i][n]=='e')
       {
-        float current=rock[i][y];
-        if(board[i][y]=='r')current+=50;
-        else if(board[i][y]=='n')current+=30;
-        else if(board[i][y]=='p')current+=10;
-        else if(board[i][y]=='q')current+=90;
-        else if(board[i][y]=='b')current+=30;
-        else if(board[i][y]=='k')current+=900;
+        float current=rock[i][n];
+        if(board[i][n]=='r')current+=50;
+        else if(board[i][n]=='n')current+=30;
+        else if(board[i][n]=='p')current+=10;
+        else if(board[i][n]=='q')current+=90;
+        else if(board[i][n]=='b')current+=30;
+        else if(board[i][n]=='k')current+=900;
         if(current-init>maxi){
         ret.x=i;
-        ret.y=y;
+        ret.y=n;
         a1=ret.x;
         b1=ret.y;
         ret.maxi=current-init;
         maxi=ret.maxi;
         }
       }
-      else if(board[i][y]=='r' || board[i][y]=='n' || board[i][y]=='p' || board[i][y]=='q' || board[i][y]=='b' || board[i][y]=='k')
+      else if(board[i][n]=='r' || board[i][n]=='n' || board[i][n]=='p' || board[i][n]=='q' || board[i][n]=='b' || board[i][n]=='k')
       {
-        float current=rock[i][y];
-        if(board[i][y]=='r')current+=50;
-        else if(board[i][y]=='n')current+=30;
-        else if(board[i][y]=='p')current+=10;
-        else if(board[i][y]=='q')current+=90;
-        else if(board[i][y]=='b')current+=30;
-        else if(board[i][y]=='k')current+=900;
+        float current=rock[i][n];
+        if(board[i][n]=='r')current+=50;
+        else if(board[i][n]=='n')current+=30;
+        else if(board[i][n]=='p')current+=10;
+        else if(board[i][n]=='q')current+=90;
+        else if(board[i][n]=='b')current+=30;
+        else if(board[i][n]=='k')current+=900;
         if(current-init>maxi){
         ret.x=i;
-        ret.y=y;
+        ret.y=n;
         a1=ret.x;
         b1=ret.y;
         ret.maxi=current-init;
@@ -99,19 +102,19 @@ point check(char c,int x,int y,char board[8][8],float king[8][8],float queen[8][
       }
       else break;
     }
-    for(int i=y+1;i<8;i++)
+    for(int i=n+1;i<8;i++)
     {
-      if(board[x][i]=='e' )
+      if(board[m][i]=='e' )
       {
-        float current=rock[x][i];
-        if(board[x][i]=='r')current+=50;
-        else if(board[x][i]=='n')current+=30;
-        else if(board[x][i]=='p')current+=10;
-        else if(board[x][i]=='q')current+=90;
-        else if(board[x][i]=='b')current+=30;
-        else if(board[x][i]=='k')current+=900;
+        float current=rock[m][i];
+        if(board[m][i]=='r')current+=50;
+        else if(board[m][i]=='n')current+=30;
+        else if(board[m][i]=='p')current+=10;
+        else if(board[m][i]=='q')current+=90;
+        else if(board[m][i]=='b')current+=30;
+        else if(board[m][i]=='k')current+=900;
         if(current-init>maxi){
-        ret.x=x;
+        ret.x=m;
         ret.y=i;
         a1=ret.x;
         b1=ret.y;
@@ -122,19 +125,19 @@ point check(char c,int x,int y,char board[8][8],float king[8][8],float queen[8][
       //else if(board[x][i]=='r'||board[x][i]=='n'||board[x][i]=='b'||board[x][i]=='p'||board[x][i]=='q'||board[x][i]=='k')
       else break;
     }
-    for(int i=y-1;i>-1;i--)
+    for(int i=n-1;i>-1;i--)
     {
-      if(board[x][i]=='e' || board[x][i]=='r'||board[x][i]=='n'||board[x][i]=='b'||board[x][i]=='p'||board[x][i]=='q'||board[x][i]=='k')
+      if(board[m][i]=='e' || board[m][i]=='r'||board[m][i]=='n'||board[m][i]=='b'||board[m][i]=='p'||board[m][i]=='q'||board[m][i]=='k')
       {
-        float current=rock[x][i];
-        if(board[x][i]=='r')current+=50;
-        else if(board[x][i]=='n')current+=30;
-        else if(board[x][i]=='p')current+=10;
-        else if(board[x][i]=='q')current+=90;
-        else if(board[x][i]=='b')current+=30;
-        else if(board[x][i]=='k')current+=900;
+        float current=rock[m][i];
+        if(board[m][i]=='r')current+=50;
+        else if(board[m][i]=='n')current+=30;
+        else if(board[m][i]=='p')current+=10;
+        else if(board[m][i]=='q')current+=90;
+        else if(board[m][i]=='b')current+=30;
+        else if(board[m][i]=='k')current+=900;
         if(current-init>maxi){
-        ret.x=x;
+        ret.x=m;
         ret.y=i;
         a1=ret.x;
         b1=ret.y;
@@ -147,8 +150,8 @@ point check(char c,int x,int y,char board[8][8],float king[8][8],float queen[8][
   }
   else if(c=='B')
   {
-    int a=x,b=y;
-    float init = bishop[x][y];
+    int a=m,b=n;
+    float init = bishop[m][n];
     while(a<7 && b<7)
     {
       a++;b++;
@@ -172,7 +175,7 @@ point check(char c,int x,int y,char board[8][8],float king[8][8],float queen[8][
       }
     else break;
     }
-    a=x;b=y;
+    a=m;b=n;
     while(a<7 && b>0)
     {
       a++;b--;
@@ -196,7 +199,7 @@ point check(char c,int x,int y,char board[8][8],float king[8][8],float queen[8][
       }
     else break;
     }
-    a=x;b=y;
+    a=m;b=n;
     while(a>0 && b<7)
     {
       a--;b++;
@@ -220,7 +223,7 @@ point check(char c,int x,int y,char board[8][8],float king[8][8],float queen[8][
       }
     else break;
     }
-    a=x;b=y;
+    a=m;b=n;
     while(a>0 && b>0)
     {
       a--;b--;
@@ -247,11 +250,11 @@ point check(char c,int x,int y,char board[8][8],float king[8][8],float queen[8][
   }
   else if(c=='N')
   {
-    float init=knight[x][y];
-    if(x+2<8 && y+1<8 && (board[x+2][y+1]=='e' || board[x+2][y+1]=='r'|| board[x+2][y+1]=='n'||board[x+2][y+1]=='p'||board[x+2][y+1]=='q'||
-board[x+2][y+1]=='b'||board[x+2][y+1]=='k'))
+    float init=knight[m][n];
+    if(m+2<8 && n+1<8 && (board[m+2][n+1]=='e' || board[m+2][n+1]=='r'|| board[m+2][n+1]=='n'||board[m+2][n+1]=='p'||board[m+2][n+1]=='q'||
+board[m+2][n+1]=='b'||board[m+2][n+1]=='k'))
     {
-        int a=x+2,b=y+1;
+        int a=m+2,b=n+1;
         float current=knight[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -268,10 +271,10 @@ board[x+2][y+1]=='b'||board[x+2][y+1]=='k'))
         maxi=ret.maxi;
         }
     }
-    if(x+1<8 && y+2<8 && (board[x+1][y+2]=='e' || board[x+1][y+2]=='r'|| board[x+1][y+2]=='n'||board[x+1][y+2]=='p'||board[x+1][y+2]=='q'||
-board[x+1][y+2]=='b'||board[x+1][y+2]=='k'))
+    if(m+1<8 && n+2<8 && (board[m+1][n+2]=='e' || board[m+1][n+2]=='r'|| board[m+1][n+2]=='n'||board[m+1][n+2]=='p'||board[m+1][n+2]=='q'||
+board[m+1][n+2]=='b'||board[m+1][n+2]=='k'))
     {
-      int a=x+1,b=y+2;
+      int a=m+1,b=n+2;
       float current=knight[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -288,10 +291,10 @@ board[x+1][y+2]=='b'||board[x+1][y+2]=='k'))
         maxi=ret.maxi;
         }
     }
-    if(x-2>-1 && y+1<8 && (board[x-2][y+1]=='e' || board[x-2][y+1]=='r'|| board[x-2][y+1]=='n'||board[x-2][y+1]=='p'||board[x-2][y+1]=='q'||
-board[x-2][y+1]=='b'||board[x-2][y+1]=='k'))
+    if(m-2>-1 && n+1<8 && (board[m-2][n+1]=='e' || board[m-2][n+1]=='r'|| board[m-2][n+1]=='n'||board[m-2][n+1]=='p'||board[m-2][n+1]=='q'||
+board[m-2][n+1]=='b'||board[m-2][n+1]=='k'))
     {
-        int a=x-2,b=y+1;
+        int a=m-2,b=n+1;
         float current=knight[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -308,9 +311,9 @@ board[x-2][y+1]=='b'||board[x-2][y+1]=='k'))
         maxi=ret.maxi;
         }
     }
-    if(x-1>-1 && y+2<8 && (board[x-1][y+2]=='e' || board[x-1][y+2]=='r'|| board[x-1][y+2]=='n'||board[x-1][y+2]=='p'||board[x-1][y+2]=='q'|| board[x-1][y+2]=='b'||board[x-1][y+2]=='k'))
+    if(m-1>-1 && n+2<8 && (board[m-1][n+2]=='e' || board[m-1][n+2]=='r'|| board[m-1][n+2]=='n'||board[m-1][n+2]=='p'||board[m-1][n+2]=='q'|| board[m-1][n+2]=='b'||board[m-1][n+2]=='k'))
     {
-      int a=x-1,b=y+2;
+      int a=m-1,b=n+2;
         float current=knight[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -327,9 +330,9 @@ board[x-2][y+1]=='b'||board[x-2][y+1]=='k'))
         maxi=ret.maxi;
         }
     }
-    if(x+2<8 && y-1>-1 && (board[x+2][y-1]=='e' || board[x+2][y-1]=='r'|| board[x+2][y-1]=='n'||board[x+2][y-1]=='p'||board[x+2][y-1]=='q'|| board[x+2][y-1]=='b'||board[x+2][y-1]=='k'))
+    if(m+2<8 && n-1>-1 && (board[m+2][n-1]=='e' || board[m+2][n-1]=='r'|| board[m+2][n-1]=='n'||board[m+2][n-1]=='p'||board[m+2][n-1]=='q'|| board[m+2][n-1]=='b'||board[m+2][n-1]=='k'))
     {
-      int a=x+2,b=y-1;
+      int a=m+2,b=n-1;
         float current=knight[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -346,11 +349,11 @@ board[x-2][y+1]=='b'||board[x-2][y+1]=='k'))
         maxi=ret.maxi;
         }
     }
-    if(x+1<8 && y-2>-1 && (board[x+1][y-2]=='e' || board[x+1][y-2]=='r'|| board[x+1][y-2]=='n'||board[x+1][y-2]=='p'||board[x+1][y-2]=='q'||
-board[x+1][y-2]=='b'||board[x+1][y-2]=='k'))
+    if(m+1<8 && n-2>-1 && (board[m+1][n-2]=='e' || board[m+1][n-2]=='r'|| board[m+1][n-2]=='n'||board[m+1][n-2]=='p'||board[m+1][n-2]=='q'||
+board[m+1][n-2]=='b'||board[m+1][n-2]=='k'))
     {
 
-      int a=x+1,b=y-2;
+      int a=m+1,b=n-2;
       float current=knight[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -367,10 +370,10 @@ board[x+1][y-2]=='b'||board[x+1][y-2]=='k'))
         maxi=ret.maxi;
         }
     }
-    if(x-2>-1 && y-1>-1 && (board[x-2][y-1]=='e' || board[x-2][y-1]=='r'|| board[x-2][y-1]=='n'||board[x-2][y-1]=='p'||board[x-2][y-
-1]=='q'||board[x-2][y-1]=='b'||board[x-2][y-1]=='k'))
+    if(m-2>-1 && n-1>-1 && (board[m-2][n-1]=='e' || board[m-2][n-1]=='r'|| board[m-2][n-1]=='n'||board[m-2][n-1]=='p'||board[m-2][n-
+1]=='q'||board[m-2][n-1]=='b'||board[m-2][n-1]=='k'))
     {
-      int a=x-2,b=y-1;
+      int a=m-2,b=n-1;
       float current=knight[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -387,10 +390,10 @@ board[x+1][y-2]=='b'||board[x+1][y-2]=='k'))
         maxi=ret.maxi;
         }
     }
-    if(x-1>-1 && y-2>-1 && (board[x-2][y-1]=='e' || board[x-2][y-1]=='r'|| board[x-2][y-1]=='n'||board[x-2][y-1]=='p'||board[x-2][y-
-1]=='q'||board[x-2][y-1]=='b'||board[x-2][y-1]=='k'))
+    if(m-1>-1 && n-2>-1 && (board[m-2][n-1]=='e' || board[m-2][n-1]=='r'|| board[m-2][n-1]=='n'||board[m-2][n-1]=='p'||board[m-2][n-
+1]=='q'||board[m-2][n-1]=='b'||board[m-2][n-1]=='k'))
     {
-      int a=x-1,b=y-2;
+      int a=m-1,b=n-2;
       float current=knight[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -410,11 +413,11 @@ board[x+1][y-2]=='b'||board[x+1][y-2]=='k'))
   }
   else if(c=='K')
   {
-    float init = king[x][y];
-    if(x+1<8 && y+1<8 && (board[x+1][y+1]=='e' || board[x+1][y+1]=='r'|| board[x+1][y+1]=='n'||board[x+1][y+1]=='p'||board[x+1][y+1]=='q'||
-board[x+1][y+1]=='b'||board[x+1][y+1]=='k'))
+    float init = king[m][n];
+    if(m+1<8 && n+1<8 && (board[m+1][n+1]=='e' || board[m+1][n+1]=='r'|| board[m+1][n+1]=='n'||board[m+1][n+1]=='p'||board[m+1][n+1]=='q'||
+board[m+1][n+1]=='b'||board[m+1][n+1]=='k'))
     {
-      int a=x+1,b=y+1;
+      int a=m+1,b=n+1;
       float current=king[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -431,10 +434,10 @@ board[x+1][y+1]=='b'||board[x+1][y+1]=='k'))
         maxi=ret.maxi;
         }
     }
-    if(x+1<8 && y-1>-1 && (board[x+1][y-1]=='e' || board[x+1][y-1]=='r'|| board[x+1][y-1]=='n'||board[x+1][y-1]=='p'||board[x+1][y-1]=='q'||
-board[x+1][y-1]=='b'||board[x+1][y-1]=='k'))
+    if(m+1<8 && n-1>-1 && (board[m+1][n-1]=='e' || board[m+1][n-1]=='r'|| board[m+1][n-1]=='n'||board[m+1][n-1]=='p'||board[m+1][n-1]=='q'||
+board[m+1][n-1]=='b'||board[m+1][n-1]=='k'))
     {
-      int a=x+1,b=y-1;
+      int a=m+1,b=n-1;
       float current=king[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -451,10 +454,10 @@ board[x+1][y-1]=='b'||board[x+1][y-1]=='k'))
         maxi=ret.maxi;
         }
     }
-    if(x-1>-1 && y+1<8 && (board[x-1][y+1]=='e' || board[x-1][y+1]=='r'|| board[x-1][y+1]=='n'||board[x-1][y+1]=='p'||board[x-1][y+1]=='q'||
-board[x-1][y+1]=='b'||board[x-1][y+1]=='k'))
+    if(m-1>-1 && n+1<8 && (board[m-1][n+1]=='e' || board[m-1][n+1]=='r'|| board[m-1][n+1]=='n'||board[m-1][n+1]=='p'||board[m-1][n+1]=='q'||
+board[m-1][n+1]=='b'||board[m-1][n+1]=='k'))
     {
-      int a=x-1,b=y+1;
+      int a=m-1,b=n+1;
       float current=king[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -471,10 +474,10 @@ board[x-1][y+1]=='b'||board[x-1][y+1]=='k'))
         maxi=ret.maxi;
         }
     }
-    if(x-1>-1 && y-1>-1 && (board[x-1][y-1]=='e' || board[x-1][y-1]=='r'|| board[x-1][y-1]=='n'||board[x-1][y-1]=='p'||board[x-1][y-
-1]=='q'||board[x-1][y-1]=='b'||board[x-1][y-1]=='k'))
+    if(m-1>-1 && n-1>-1 && (board[m-1][n-1]=='e' || board[m-1][n-1]=='r'|| board[m-1][n-1]=='n'||board[m-1][n-1]=='p'||board[m-1][n-
+1]=='q'||board[m-1][n-1]=='b'||board[m-1][n-1]=='k'))
     {
-      int a=x-1,b=y-1;
+      int a=m-1,b=n-1;
       float current=king[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -491,10 +494,10 @@ board[x-1][y+1]=='b'||board[x-1][y+1]=='k'))
         maxi=ret.maxi;
         }
     }
-    if(y+1<8 && (board[x][y+1]=='e' || board[x][y+1]=='r'|| board[x][y+1]=='n'||board[x][y+1]=='p'||board[x][y+1]=='q'||board[x][y+1]=='b'||
-board[x][y+1]=='k'))
+    if(n+1<8 && (board[m][n+1]=='e' || board[m][n+1]=='r'|| board[m][n+1]=='n'||board[m][n+1]=='p'||board[m][n+1]=='q'||board[m][n+1]=='b'||
+board[m][n+1]=='k'))
     {
-      int a=x,b=y+1;
+      int a=m,b=n+1;
       float current=king[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -511,10 +514,10 @@ board[x][y+1]=='k'))
         maxi=ret.maxi;
         }
     }
-    if(y-1>-1 && (board[x][y-1]=='e' || board[x][y-1]=='r'|| board[x][y-1]=='n'||board[x][y-1]=='p'||board[x][y-1]=='q'||board[x][y-
-1]=='b'||board[x][y-1]=='k'))
+    if(n-1>-1 && (board[n][m-1]=='e' || board[n][m-1]=='r'|| board[m][n-1]=='n'||board[m][n-1]=='p'||board[m][n-1]=='q'||board[m][n-
+1]=='b'||board[m][n-1]=='k'))
     {
-      int a=x,b=y-1;
+      int a=m,b=n-1;
       float current=king[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -531,10 +534,10 @@ board[x][y+1]=='k'))
         maxi=ret.maxi;
         }
     }
-    if(x-1>-1 && (board[x-1][y]=='e' || board[x-1][y]=='r'|| board[x-1][y]=='n'||board[x-1][y]=='p'||board[x-1][y]=='q'||board[x-1]
-[y]=='b'||board[x-1][y]=='k'))
+    if(m-1>-1 && (board[m-1][n]=='e' || board[m-1][n]=='r'|| board[m-1][n]=='n'||board[m-1][n]=='p'||board[m-1][n]=='q'||board[m-1]
+[n]=='b'||board[m-1][n]=='k'))
     {
-      int a=x-1,b=y;
+      int a=m-1,b=n;
       float current=king[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -551,10 +554,10 @@ board[x][y+1]=='k'))
         maxi=ret.maxi;
         }
     }
-    if(x+1<8 && (board[x+1][y]=='e' || board[x+1][y]=='r'|| board[x+1][y]=='n'||board[x+1][y]=='p'||board[x+1][y]=='q'||board[x+1][y]=='b'||
-board[x+1][y]=='k'))
+    if(m+1<8 && (board[m+1][n]=='e' || board[m+1][n]=='r'|| board[m+1][n]=='n'||board[m+1][n]=='p'||board[m+1][n]=='q'||board[m+1][n]=='b'||
+board[m+1][n]=='k'))
     {
-      int a=x+1,b=y;
+      int a=m+1,b=n;
       float current=king[a][b];
         if(board[a][b]=='r')current+=50;
         else if(board[a][b]=='n')current+=30;
@@ -572,16 +575,16 @@ board[x+1][y]=='k'))
         }
     }
   }
-  else if(c=='P')
+  else if(board[m][n]=='P')
   {
-    float init = pawn[x][y];
-    if(x==1)
+    float init = pawn[m][n];
+    if(m==1)
     {
-      for(int i=x+1;i<4;i++)
+      for(int i=m+1;i<4;i++)
       {
-        if((board[i][y]=='e' || board[i][y]=='r'|| board[i][y]=='n'||board[i][y]=='p'||board[i][y]=='q'||board[i][y]=='b'||board[i][y]=='k'))
+        if((board[i][n]=='e' || board[i][n]=='r'|| board[i][n]=='n'||board[i][n]=='p'||board[i][n]=='q'||board[i][n]=='b'||board[i][n]=='k'))
         {
-          int a=i,b=y;
+          int a=i,b=n;
           float current=pawn[a][b];
           if(board[a][b]=='r')current+=50;
           else if(board[a][b]=='n')current+=30;
@@ -601,10 +604,10 @@ board[x+1][y]=='k'))
     else break;
     }
     }
-    if(x+1<8 && (board[x+1][y]=='e' || board[x+1][y]=='r'|| board[x+1][y]=='n'||board[x+1][y]=='p'||board[x+1][y]=='q'||board[x+1][y]=='b'||
-board[x+1][y]=='k'))
+    if(m+1<8 && (board[m+1][n]=='e' || board[m+1][n]=='r'|| board[m+1][n]=='n'||board[m+1][n]=='p'||board[m+1][n]=='q'||board[m+1][n]=='b'||
+board[m+1][n]=='k'))
     {
-          int a=x+1,b=y;
+          int a=m+1,b=n;
           float current=pawn[a][b];
           if(board[a][b]=='r')current+=50;
           else if(board[a][b]=='n')current+=30;
@@ -621,9 +624,9 @@ board[x+1][y]=='k'))
           maxi=ret.maxi;
     }
     }
-    if(x+1<8 && y+1<8 && (board[x+1][y+1]>='b'||board[x+1][y+1]>='n'||board[x+1][y+1]>='k'||board[x+1][y+1]>='r'||board[x+1][y+1]>='q'||board[x+1][y+1]>='p'))
+    if(m+1<8 && n+1<8 && (board[m+1][n+1]>='b'||board[m+1][n+1]>='n'||board[m+1][n+1]>='k'||board[m+1][n+1]>='r'||board[m+1][n+1]>='q'||board[m+1][n+1]>='p'))
     {
-          int a=x+1,b=y+1;
+          int a=m+1,b=n+1;
           float current=pawn[a][b];
           if(board[a][b]=='r')current+=50;
           else if(board[a][b]=='n')current+=30;
@@ -640,10 +643,10 @@ board[x+1][y]=='k'))
           maxi=ret.maxi;
     }
     }
-    if(x+1<8 && y-1>-1 && (board[x+1][y-1]>='b'||board[x+1][y-1]>='n'||board[x+1][y-1]>='k'||board[x+1][y-1]>='r'||board[x+1][y-1]>='q'||
-    board[x+1][y-1]>='p'))
+    if(m+1<8 && n-1>-1 && (board[m+1][n-1]>='b'||board[m+1][n-1]>='n'||board[m+1][n-1]>='k'||board[m+1][n-1]>='r'||board[m+1][n-1]>='q'||
+    board[m+1][n-1]>='p'))
     {
-          int a=x+1,b=y-1;
+          int a=m+1,b=n-1;
           float current=pawn[a][b];
           if(board[a][b]=='r')current+=50;
           else if(board[a][b]=='n')current+=30;
@@ -661,10 +664,10 @@ board[x+1][y]=='k'))
     }
   }
   }
-  else if(c=='Q')
+  else if(board[m][n]=='Q')
   {
-    float init  = queen[x][y];
-    int a=x,b=y;
+    float init  = queen[m][n];
+    int a=m,b=n;
     while(a<7 && b<7)
     {
       a++;b++;
@@ -689,7 +692,7 @@ board[x+1][y]=='k'))
     }
     else break;
     }
-    a=x;b=y;
+    a=m;b=n;
     while(a<7 && b>0)
     {
       a++;b--;
@@ -714,7 +717,7 @@ board[x+1][y]=='k'))
     }
     else break;
     }
-    a=x;b=y;
+    a=m;b=n;
     while(a>0 && b<7)
     {
       a--;b++;
@@ -739,7 +742,7 @@ board[x+1][y]=='k'))
     }
     else break;
     }
-    a=x;b=y;
+    a=m;b=n;
     while(a>0 && b>0)
     {
       a--;b--;
@@ -764,7 +767,7 @@ board[x+1][y]=='k'))
     }
     else break;
     }
-    a=x;b=y;
+    a=m;b=n;
     while(a>0)
     {
       a--;
@@ -789,7 +792,7 @@ board[x+1][y]=='k'))
     }
     else break;
     }
-    a=x;b=y;
+    a=m;b=n;
     while(b>0)
     {
       b--;
@@ -814,7 +817,7 @@ board[x+1][y]=='k'))
     }
     else break;
     }
-    a=x;b=y;
+    a=m;b=n;
     while(a<7)
     {
       a++;
@@ -839,7 +842,7 @@ board[x+1][y]=='k'))
       }
     else break;
     }
-    a=x;b=y;
+    a=m;b=n;
     while(b<7)
     {
       b++;
