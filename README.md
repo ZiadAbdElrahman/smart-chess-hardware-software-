@@ -19,9 +19,6 @@ Adding the GUI feature to the program:	8
    
 
 
-
-You can learn more about our project through this link:
-https://l.facebook.com/l.php?u=https%3A%2F%2Fgithub.com%2FZiadAbdElrahman%2FChess-arduino-controlled-board-with-c-user-interface&h=ATM9FQELOZkI-wnHSpIKaV3QKCkqX1nXULm6TeQNTX8p1T34b6y6u5ir7v3-Ej-smkzmjHAjzX_aV79VZ0FxJyA4ADcmFM70oHq08Atj
 The hardware system:
 Components used:
 An Arduino uno
@@ -78,13 +75,6 @@ So, in order to communicate the data we searched for a way to programme that. We
 
 
 
-
-
-
-
-
-
-
 Adding the GUI feature to the program:
 Simple SFML Chess having  2 levels : 
 -Beginner (simple logical algorithm)
@@ -98,4 +88,4 @@ Basic Chess Logic : Set up the chess board and pieces to start the game. Had to 
 
 Stockfish:
 An UCI compatible open source chess engine developed by Tord Romstad, Marco Costalba, Joona Kiiski, and Gary Linscott[1] . Marco forked the project from version 2.1 of Tord's strong engine Glaurung, first announced by Marco in November 8, 2008 [2] , and in early 2009 Joona's Smaug, a further Glaurung 2.2 derivative, was incorporated [3] . Starting out among the top twenty engines, Stockfish has quickly climbed in strength. The name "Stockfish" reflects the ancestry of the engine. Tord is Norwegian and Marco Italian, and there is a long history of stockfish trade from Norway to Italy (to Marco's home town of Vicenza, in fact). Stockfish also references another famous "little fish", Rybka.
-you can learn more about our project by the linke
+
